@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>游戏美术风格设计底层逻辑 | Ayami的博客帆</title><meta name="author" content="Ayami"><meta name="copyright" content="Ayami"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="参考视频： 原创风格公式。正确认识游戏美术风格 游戏美术设计，三个底层逻辑： 第一条：正确认识风格风格分析方法论如何正确认识风格？风格=题材元素+感受调性+技法风格（表现技法）我们可以依靠这种方法论来拆解一个项目的风格。题材元素：是什么内容（画面具体呈现了什么东西，区别于世界观题材）感受调性：带给人的感受、情绪是什么？（比如压抑、搞笑、怀旧、热烈、阴冷）技法风格：用了什么技术手段、怎么表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏美术风格设计底层逻辑">
+<meta property="og:url" content="http://example.com/2025/05/25/3D_Art/%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E9%A3%8E%E6%A0%BC%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91/index.html">
+<meta property="og:site_name" content="Ayami的博客帆">
+<meta property="og:description" content="参考视频： 原创风格公式。正确认识游戏美术风格 游戏美术设计，三个底层逻辑： 第一条：正确认识风格风格分析方法论如何正确认识风格？风格=题材元素+感受调性+技法风格（表现技法）我们可以依靠这种方法论来拆解一个项目的风格。题材元素：是什么内容（画面具体呈现了什么东西，区别于世界观题材）感受调性：带给人的感受、情绪是什么？（比如压抑、搞笑、怀旧、热烈、阴冷）技法风格：用了什么技术手段、怎么表">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://t.alcy.cc/ycy">
+<meta property="article:published_time" content="2025-05-25T14:55:23.739Z">
+<meta property="article:modified_time" content="2025-05-25T15:02:42.980Z">
+<meta property="article:author" content="Ayami">
+<meta property="article:tag" content="审美">
+<meta property="article:tag" content="游戏美术设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://t.alcy.cc/ycy"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "游戏美术风格设计底层逻辑",
+  "url": "http://example.com/2025/05/25/3D_Art/%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E9%A3%8E%E6%A0%BC%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91/",
+  "image": "https://t.alcy.cc/ycy",
+  "datePublished": "2025-05-25T14:55:23.739Z",
+  "dateModified": "2025-05-25T15:02:42.980Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Ayami",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/assets/icon.jpg"><link rel="canonical" href="http://example.com/2025/05/25/3D_Art/%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E9%A3%8E%E6%A0%BC%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '游戏美术风格设计底层逻辑',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/assets/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/assets/icon.jpg" onerror="this.onerror=null;this.src='/assets/friend_404.gif'" alt="avatar"></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: [object Object];"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Ayami的博客帆</span></a><a class="nav-page-title" href="/"><span class="site-name">游戏美术风格设计底层逻辑</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/timeline/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">游戏美术风格设计底层逻辑</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-05-25T14:55:23.739Z" title="发表于 2025-05-25 22:55:23">2025-05-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-05-25T15:02:42.980Z" title="更新于 2025-05-25 23:02:42">2025-05-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BE%8E%E6%9C%AF%E5%AD%A6%E4%B9%A0/">美术学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2025-05-25 23:02:42&quot;}" hidden=""></div><p><strong>参考视频：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1984y1X7ch/?spm_id_from=333.337.search-card.all.click">原创风格公式。正确认识游戏美术风格</a></p>
+<h1 id="游戏美术设计，三个底层逻辑："><a href="#游戏美术设计，三个底层逻辑：" class="headerlink" title="游戏美术设计，三个底层逻辑："></a>游戏美术设计，三个底层逻辑：</h1><p><img src="/../../assets/network-asset-1699862560615-aa839dbd-8de2-4f6d-ad30-42b8e177235e-20250525203434-vmmq059.png" alt="image.png"><br><img src="/../../assets/network-asset-1699862581488-15ac243c-3fdc-4f13-ad31-99a073b37adc-20250525203434-cev94ta.png" alt="image.png"></p>
+<h1 id="第一条：正确认识风格"><a href="#第一条：正确认识风格" class="headerlink" title="第一条：正确认识风格"></a>第一条：正确认识风格</h1><h2 id="风格分析方法论"><a href="#风格分析方法论" class="headerlink" title="风格分析方法论"></a>风格分析方法论</h2><p>如何正确认识风格？<strong>风格=题材元素+感受调性+技法风格（表现技法）</strong><br>我们可以依靠这种<strong>方法论</strong>来拆解一个项目的风格。<br><strong>题材元素：是什么内容（画面具体呈现了什么东西，区别于世界观题材）</strong><br><strong>感受调性：带给人的感受、情绪是什么？（比如压抑、搞笑、怀旧、热烈、阴冷）</strong><br><strong>技法风格：用了什么技术手段、怎么表达的（绘画技法、引擎的渲染方式（shader）、PBR、NPR、3D、2D、手绘等等）</strong></p>
+<h2 id="举例1："><a href="#举例1：" class="headerlink" title="举例1："></a>举例1：</h2><p><img src="/../../assets/network-asset-1699863865992-fd5b00c1-feff-4575-8a2c-f8b82fba0408-20250525203434-5bfpaa6.png" alt="image.png"><br><strong>从题材上看：</strong><br>我们从画面的内容上看到旗子上的蜀、汉、诸葛，内容还有攻城车、城墙、士兵等可以知道这是一个三国题材，更进一步可以知道这是个战争题材（这是一种画面的表现内容，还可以是儿女情长，兄弟情义等）。<br><strong>从表现技法上看：</strong><br>从画面可以看出这是一个偏写实技法，有绘画质感，画面笔触较粗犷，不是超写实风格。<br><strong>从感受调性上看：</strong><br>黑云压城、炮火连天，可以感受到是非常压抑残酷，对抗激烈的情绪。</p>
+<h2 id="分析练习："><a href="#分析练习：" class="headerlink" title="分析练习："></a>分析练习：</h2><p><img src="/../../assets/network-asset-1699864362683-2ad04af2-b731-43b5-9c12-3dc5237b81f5-20250525203434-umpkesu.png" alt="image.png"><br><strong>题材</strong>：（从CG图来看，这里不讨论这个游戏的玩法）古风题材，更细的来说是古风恋爱题材<br><strong>表现技法</strong>：偏写实，但是不是超写实，是有美型角色的那种风格，背景类似油画笔触。<br><strong>感受调性</strong>：儿女情长，男女之爱，卿卿我我，温婉细腻的情绪感受。<br><img src="/../../assets/network-asset-1699864505732-78042b37-d770-4994-b91b-dd3792d74773-20250525203435-4speagl.png" alt="image.png"><br><strong>题材</strong>：古风、战争的题材。<br><strong>表现技法</strong>：水墨笔触风格。大量的留白，画面只出现军旗未见兵。<br><strong>感受调性</strong>：决意、舍身赴死、孤独洒脱的情绪。</p>
+<h2 id="风格的深入思考"><a href="#风格的深入思考" class="headerlink" title="风格的深入思考"></a>风格的深入思考</h2><p>思考：风格是一个很泛化的东西，上面只是一个通用的简单的思考方法论。而实际上风格多种多样，<strong>任何你可以看出差异的东西都可以称之为风格</strong>，比如头身的比例，人体结构的简化和复杂，以及与其他物体的结合（方块人、火柴人、福瑞、猫娘、舰娘、机甲等）。风格的差异，其实就是创新和多元化的产物。总之，在不同的事物领域（美术画面、听觉、文字等等）上，风格总是指那些独特、能够总结出一些特征的元素。归根结底，风格就是一个东西和另一个东西的差异（区别）点。</p>
+<h1 id="第二条：三层设计思维"><a href="#第二条：三层设计思维" class="headerlink" title="第二条：三层设计思维"></a>第二条：三层设计思维</h1><h2 id="什么是底层逻辑，什么是顶层思维？https-www-zhihu-com-question-380838585"><a href="#什么是底层逻辑，什么是顶层思维？https-www-zhihu-com-question-380838585" class="headerlink" title="什么是底层逻辑，什么是顶层思维？https://www.zhihu.com/question/380838585"></a>什么是底层逻辑，什么是顶层思维？<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/380838585">https://www.zhihu.com/question/380838585</a></h2><h2 id="游戏美术设计和世界观的关系"><a href="#游戏美术设计和世界观的关系" class="headerlink" title="游戏美术设计和世界观的关系"></a>游戏美术设计和世界观的关系</h2><p><img src="/../../assets/network-asset-1699873532337-4fc1fd28-86b5-40b2-ab82-98643469aa66-20250525203435-70r28ce.png" alt="image.png"><br>    什么是顶层设计逻辑和底层设计逻辑？有人说世界观是顶层思维逻辑，有人说世界观是底层思维逻辑，其实都不尽然正确。<br>我们进行美术设计的时候，一般考虑出发点：世界观、风格（题材元素、可爱的角色、战争、姿态、情绪）等等。而不是绝对的先有世界观，再设计其他元素。</p>
+<p><strong>游戏美术设计的出发点</strong>是什么？可能我们是先有的<strong>世界观</strong>，然后根据世界观去进行<strong>美术设计</strong>；也有可能是先有<strong>一个想要创作的情绪</strong>，比如我想表达一个悲伤的情绪，然后再一步步去设计构建其他诸如世界观、题材元素等等。或者我单纯想要制作一个可爱的角色，我们想根表达角色的可爱，再以此为出发点去设计其他构成元素。所以世界观和美术设计、情绪这些并没有其中一个是<strong>绝对的底层逻辑</strong>。</p>
+<p>而真正<strong>游戏设计的前后（上下游）<strong>​****大概是这样的，游戏制作中大概是先考虑完成世界观的构建，再根据世界观去进行美术设计。游戏研发上世界观和美术设计是上游和下游的关系。但是实际抛开游戏开发不谈，我们单纯进行美术设计的时候，世界观和美术设计并不是有一个绝对的底层逻辑。</strong></strong></p>
+<p><strong><strong>对设计师来说：我们先来讲一讲</strong></strong>​<strong>方法论</strong>，我们一般设计东西会<strong>强调方法论，总结理论技巧方法，用来复制产出一些效果。<strong>​<strong><strong>说白了就是</strong></strong>​</strong>技法</strong>。姑且称它为<strong>中层设计</strong>，<strong>底层设计</strong>则是我们的一些想法，思考点，或者说我们的创作动机，我们想要创作一个可爱的角色、或者是表达一个情绪、展现一个世纪观之类的。基于这种<strong>底层设计</strong>，我们会思考我们要添加什么元素到我们的画面上，使用什么方法（技法）来实现我们的创作动机。这利用到了中层设计。</p>
+<p>而<strong>顶层设计</strong>，则是指导我们设计的一种框架，设计原则，比如我们做一个项目，我们会考虑我们项目的用户（受众）是什么类型的人？（美术风格、游戏玩法、剧情体验、受众年龄、受众性别等等），基于用户类型，来指导我们进行游戏的整体框架的设计，是一种统筹谋划的思维。一般来说，你是管理层，或者独立游戏开发者，会比较注重顶层思维，这会关系到你的项目的成功与否。当然如果你是单纯的美术设计师的话，了解一下顶层思维，分析清楚你的受众，然后去进行设计，可以也会使你的作品被喜欢的概率更高，总之，了解一下顶层设计，是不会有坏处的。</p>
+<p>网络上做自媒体有一种说法叫做<strong>基本盘</strong>，即你的作品的受众<strong>大多</strong>是什么类型的？那么这个类型就是你当自媒体的<strong>基本盘，</strong> 只要你稳固自己的基本盘，运营和维持你的基本盘，那么你基本就不会翻车。这和顶层设计的思维有一些异曲同工之妙。<br>在工作中，游戏美术设计这块上，是顶层指导中层，中层指导底层的，也可以理解为上级做框架，规定美术效果用什么技法实现，这些技法来指导我们制作我们的美术设计。</p>
+<p>‍</p>
+<p><img src="/../../assets/network-asset-1699874015166-0c869d2d-2c4e-489d-a899-25d165aa2609-20250525203435-yrd40lt.png" alt="image.png"></p>
+<h1 id="第三条：抛球理论"><a href="#第三条：抛球理论" class="headerlink" title="第三条：抛球理论"></a>第三条：抛球理论</h1><p><img src="/../../assets/network-asset-1699877150636-579c84b5-4dfa-45e5-8eee-f6b48c007ff9-20250525203435-2f421r0.png" alt="image.png"><br>    抛弃理论很简单，我们游戏项目制作时，我们要同时注重游戏的美感表现、世界观背景（背景、剧情、人物的文字刻画等等）和功能体验（游戏玩法）。当然我们在这几个注重的点里要有一个更为侧重的点，当然所有的点都照顾到很好，但是大多不会面面俱全。所以我们会有一个更为侧重的点。</p>
+<h1 id="风格分类图表："><a href="#风格分类图表：" class="headerlink" title="风格分类图表："></a>风格分类图表：</h1><p><img src="/../../assets/network-asset-1699865352885-e3ccf1df-6c04-4afd-ac0a-a191dcb44e4c-20250525203435-jkflhsa.png" alt="image.png"><br>我们可以善用表格来去对比交叉的内容<br><img src="/../../assets/network-asset-1699865452705-9daa7716-8314-4570-a4da-0c115b080586-20250525203435-euvy819.png" alt="image.png"></p>
+<h1 id="进阶：美的塑造是哪几方面的"><a href="#进阶：美的塑造是哪几方面的" class="headerlink" title="进阶：美的塑造是哪几方面的"></a>进阶：美的塑造是哪几方面的</h1><p><img src="/../../assets/network-asset-1699863777432-d7efb5d2-d794-41f1-bd4a-5d42e3039856-20250525203435-fq71p6j.png" alt="image.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Ayami</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/05/25/3D_Art/%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E9%A3%8E%E6%A0%BC%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91/">http://example.com/2025/05/25/3D_Art/%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E9%A3%8E%E6%A0%BC%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">Ayami的博客帆</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AE%A1%E7%BE%8E/">审美</a><a class="post-meta__tags" href="/tags/%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1/">游戏美术设计</a></div><div class="post-share"><div class="social-share" data-image="https://t.alcy.cc/ycy" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer=""></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/25/Blender/Blender%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" title="Blender基础操作与常见问题"><img class="cover" src="https://t.alcy.cc/moemp" onerror="onerror=null;src='/assets/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Blender基础操作与常见问题</div></div><div class="info-2"><div class="info-item-1">Blender基础操作通用操 作命令：TAB： ​切换为编辑模式​ 、 Ctrl+TAB： 切换多种模式 AlT+Shift+S：拉为球形 L： 循环选择相似面 ctrl键选择点、线或面：拾取最短路径： 鼠标点选点线或面，选中另一个点线或面，即可拾取最 短路径 Shift+h： 只显示选中的面 G:移动、R：旋转、S：放缩、A: 全选物体 B: 框选物体、Ctrl+i： 反选物体、I： 内插面 （选中物体按下G、R、S进行编辑时，再按x、y、z会将物体吸附在所选轴上进行编辑，按C清除吸附） X：删除、E：挤出、Z：**着色方式、 Ctrl+鼠标右键： 添加所选物体或线或点 ALT+S： 沿法向缩放 H：隐藏所选、Alt+H：取消所有隐藏 W： 改变选择物体的方式 K： 切割（回车键确定） M: 合并点线面 Ctrl+R： 环切（鼠标滑轮改变数量） Shift+鼠标左键： 多选物体 Shift+鼠标右键： 将游标点移动到鼠标所在位置 Shift+A： 添加物体 Shift+D: 复制物体 Alt+D： 关联复制 Ctrl+J： 合并选中的多个物体 Ctrl+E：...</div></div></div></a></nav><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/assets/icon.jpg" onerror="this.onerror=null;this.src='/assets/friend_404.gif'" alt="avatar"></div><div class="author-info-name">Ayami</div><div class="author-info-description">记录生活，记录技术。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ayami22"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/ayami22" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:a205525075@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=205525075&amp;website=www.oicqzone.com" target="_blank" title=""><i class="fa-brands fa-qq"></i></a><a class="social-icon" href="https://space.bilibili.com/313552137" target="_blank" title=""><i class="fa-brands fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到Ayami的博客。 <div class="social-button"><a class="button--animated" href="https://baidu.com/" rel="external nofollow noreferrer" target="_blank">这是一个测试链接</a></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%EF%BC%8C%E4%B8%89%E4%B8%AA%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">游戏美术设计，三个底层逻辑：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%9D%A1%EF%BC%9A%E6%AD%A3%E7%A1%AE%E8%AE%A4%E8%AF%86%E9%A3%8E%E6%A0%BC"><span class="toc-number">2.</span> <span class="toc-text">第一条：正确认识风格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E6%A0%BC%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="toc-number">2.1.</span> <span class="toc-text">风格分析方法论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B1%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">举例1：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E7%BB%83%E4%B9%A0%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">分析练习：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A3%8E%E6%A0%BC%E7%9A%84%E6%B7%B1%E5%85%A5%E6%80%9D%E8%80%83"><span class="toc-number">2.4.</span> <span class="toc-text">风格的深入思考</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%9D%A1%EF%BC%9A%E4%B8%89%E5%B1%82%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B4"><span class="toc-number">3.</span> <span class="toc-text">第二条：三层设计思维</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E9%A1%B6%E5%B1%82%E6%80%9D%E7%BB%B4%EF%BC%9Fhttps-www-zhihu-com-question-380838585"><span class="toc-number">3.1.</span> <span class="toc-text">什么是底层逻辑，什么是顶层思维？https://www.zhihu.com/question/380838585</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E8%AE%BE%E8%AE%A1%E5%92%8C%E4%B8%96%E7%95%8C%E8%A7%82%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">3.2.</span> <span class="toc-text">游戏美术设计和世界观的关系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%9D%A1%EF%BC%9A%E6%8A%9B%E7%90%83%E7%90%86%E8%AE%BA"><span class="toc-number">4.</span> <span class="toc-text">第三条：抛球理论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A3%8E%E6%A0%BC%E5%88%86%E7%B1%BB%E5%9B%BE%E8%A1%A8%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">风格分类图表：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%EF%BC%9A%E7%BE%8E%E7%9A%84%E5%A1%91%E9%80%A0%E6%98%AF%E5%93%AA%E5%87%A0%E6%96%B9%E9%9D%A2%E7%9A%84"><span class="toc-number">6.</span> <span class="toc-text">进阶：美的塑造是哪几方面的</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/05/25/3D_Art/%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E9%A3%8E%E6%A0%BC%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91/" title="游戏美术风格设计底层逻辑"><img src="https://t.alcy.cc/ycy" onerror="this.onerror=null;this.src='/assets/404.jpg'" alt="游戏美术风格设计底层逻辑"></a><div class="content"><a class="title" href="/2025/05/25/3D_Art/%E6%B8%B8%E6%88%8F%E7%BE%8E%E6%9C%AF%E9%A3%8E%E6%A0%BC%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91/" title="游戏美术风格设计底层逻辑">游戏美术风格设计底层逻辑</a><time datetime="2025-05-25T14:55:23.739Z" title="发表于 2025-05-25 22:55:23">2025-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/25/Blender/Blender%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" title="Blender基础操作与常见问题"><img src="https://t.alcy.cc/moemp" onerror="this.onerror=null;this.src='/assets/404.jpg'" alt="Blender基础操作与常见问题"></a><div class="content"><a class="title" href="/2025/05/25/Blender/Blender%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" title="Blender基础操作与常见问题">Blender基础操作与常见问题</a><time datetime="2025-05-25T12:15:09.688Z" title="发表于 2025-05-25 20:15:09">2025-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/25/Japanese/%E6%97%A5%E8%AF%AD%E5%8F%91%E9%9F%B3%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF%EF%BC%88%E4%B8%80%EF%BC%89/" title="(一)日语发声那些事儿"><img src="https://t.alcy.cc/moe" onerror="this.onerror=null;this.src='/assets/404.jpg'" alt="(一)日语发声那些事儿"></a><div class="content"><a class="title" href="/2025/05/25/Japanese/%E6%97%A5%E8%AF%AD%E5%8F%91%E9%9F%B3%E9%82%A3%E7%82%B9%E4%BA%8B%E5%84%BF%EF%BC%88%E4%B8%80%EF%BC%89/" title="(一)日语发声那些事儿">(一)日语发声那些事儿</a><time datetime="2025-05-25T05:05:46.710Z" title="发表于 2025-05-25 13:05:46">2025-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/24/Git%E5%8F%8AGitte%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" title="Git及Gitte远程仓库与常见问题"><img src="https://t.alcy.cc/ycy" onerror="this.onerror=null;this.src='/assets/404.jpg'" alt="Git及Gitte远程仓库与常见问题"></a><div class="content"><a class="title" href="/2025/05/24/Git%E5%8F%8AGitte%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/" title="Git及Gitte远程仓库与常见问题">Git及Gitte远程仓库与常见问题</a><time datetime="2025-05-24T06:45:08.000Z" title="发表于 2025-05-24 14:45:08">2025-05-24</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div id="footer-wrap"><div class="copyright">©2019 - 2025 By Ayami</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo.ayami22.github.io',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://twikoo.ayami22.github.io',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><div class="aplayer no-destroy" data-id="13519966293" data-server="netease" data-type="playlist" data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" data-lrc-type="0"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
