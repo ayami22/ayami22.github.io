@@ -64,3 +64,7 @@
 [data-theme='dark'] #footer-wrap a {
   color: var(--light-grey);
 }
+.layout > #post {
+/* 以下代表透明度为0.5 可以自行修改*/
+  background: rgba(255,255,255,0.9);
+}
